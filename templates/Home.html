@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="css" href="{{url_for('static',filename='css/pages.css')}}">
+    <link rel="stylesheet" href="static/css/pages.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a9197537e4.js" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        $('form').submit(function(event) {
+          event.preventDefault(); // Prevent default form submission
+          var geneSequence = $('#gene_sequence').val(); // Get the gene sequence value
+          $.ajax({
+            url: '/predict',
+            type: 'POST',
+            data: {gene_sequence: geneSequence},
+            success: function(response) {
+              var entseq = response.Sequence;
+              $('#entseq').text(entseq)
+              
+              var predictedHeight = response.Predicted_Height; // Extract the predicted height
+              $('#pre_h').text(predictedHeight);
+
+              var predictedSubpopulation = response.Predicted_Subpopulation;
+              $('#pre_s').text(predictedSubpopulation);
+
+              var predictedYield = response.Predicted_Yield;
+              $('#pre_y').text(predictedYield)
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      function displaypredictions()
+      {
+        var x=document.getElementById('Predictions').innerHTML;
+        document.getElementById('blank').innerHTML=x;
+      }
+    </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <a class="navbar-brand" href="Homes">AgriGen</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#Homes"><i class="fa-solid fa-house" style="color: #ffffff;"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Abt"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i> About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#predicas"><i class="fa-solid fa-laptop-code" style="color: #ffffff;"></i> Get Predictions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('getdata') }}"><i class="fa-solid fa-folder-open" style="color: #ffffff;"></i> Get Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i> Contact</a>
+        </li>
+    </div>
+  </nav>
+  <div class="Home" id="Homes"></div>
+  <div class="container mt-5">
+    <div class="bodycont slide-up">
+      <h1 class="wlc">Welcome to AgriGen</h1>
+      <br>
+      <p>
+        AgriGen is a cutting-edge platform dedicated to the genomic prediction of Oryza sativa rice, revolutionizing the field of agricultural genomics. Leveraging advanced techniques and state-of-the-art technologies, AgriGen employs genomic data to predict desirable traits and characteristics of rice plants. By analyzing the genetic makeup of Oryza sativa, AgriGen offers valuable insights into yield potential, plant height and other essential traits. This groundbreaking approach enables farmers, breeders, and researchers to make informed decisions, accelerate the development of improved rice varieties, and enhance global food security. AgriGen's commitment to harnessing the power of genomics places it at the forefront of agricultural innovation, empowering stakeholders in the rice industry with unprecedented opportunities for sustainable and efficient crop improvement. </p>
+    </div>
+  </div>
+</div>
+</div>
+<br><br>
+<div class="About Us" id="Abt">
+<div class="container mt-5">
+    <div class="bodycont slide-up">
+      <h1 class="abtus"></i>About Us</h1>
+      <p>AgriGen is a leading platform that offers users the opportunity to predict the variety, plant height, and yield potential of Oryza sativa (Rice) using state-of-the-art machine learning techniques. Our platform is built upon extensive data obtained from 9 variation IDs, carefully filtered and enhanced. To ensure utmost accuracy, we applied variation machine learning models and selected those with the highest predictive performance. At AgriGen, we understand the importance of transparency, which is why we provide users with a copy of the data used for predictions. In the section below, users can input their data and obtain precise and reliable results for informed decision-making.</p>
+      <img alt="..."></img><img alt="..."></img><img alt="..."></img>
+    </div>
+  </div>
+</div>
+</div>
+<br><br>
+<div class="Preds" id="predicas">
+<div class="container mt-5">
+  <div class="bodycont slide-up">
+    <h1 class="abtus">Prediction</h1>
+    <h5>AgriGen allows user to predict the Oryza Sativa Plant Height and determine its variety just by using a 9 digit DNA sequence of the plant</h5>
+    <br>
+    <form>
+      <div class="inps">
+        <p>Enter a 9-letter sequence (Chromosomal ID 1-12):</p>
+        <input type="text" class="form-control" id="gene_sequence" name="gene_sequence" pattern="[A-Za-z]{9}" aria-describedby="seqs" required>
+      </div>
+      <div class="prebtn mt-4">      
+        <button onclick="displaypredictions()" class="btn btn-success" >Submit</button>
+      </div>
+    </form>    
+  </div>
+</div>
+<p id="blank"></p>
+<div class="Preds" id="Predictions" style="display: None;">
+  <div class="container mt-5">
+    <div class="bodycont slide-up">
+      <h1 class="abtus">Prediction Results</h1><br>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            Sequence Entered:
+          </div>
+          <div class="col">
+            <div class="outbox" id="entseq">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            Predicted Height(in cms):
+          </div>
+          <div class="col">
+
+            <div class="outbox" id="pre_h">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Accuracy percentage of height:
+          </div>
+          <div class="col">
+            <div class="outbox">
+              79.43493225425912 %
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            Predicted Subpopulation:
+          </div>
+          <div class="col">
+            <div class="outbox" id="pre_s">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Accuracy percentage of Subpopulation:
+          </div>
+          <div class="col">
+            <div class="outbox">
+              87.73584905660378 %
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            Predicted Yield:
+          </div>
+          <div class="col">
+            <div class="outbox" id="pre_y">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Accuracy of the Predicted Yield:
+          </div>
+          <div class="col">
+            <div class="outbox">
+              78.75339936114923 %
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br>
+<footer id="contact">
+<div class="foots">
+    <h1 class="cons">Contact Us:</h1>
+    <br>
+    <p class="cons""><i class="fa-solid fa-inbox" style="color: #ffffff;"></i> Email: atharvvt14@gmail.com</p>
+    <br>
+    <p class="cons" ><i class="fa-solid fa-phone" style="color: #ffffff;"></i>  mobile no: 8688535513</p>
+    <br>
+    <p class="cons"><i class="fa-brands fa-github"></i> Github id:<a style="color:#ffffff;" href="https://github.com/CodifyAT">CodifyAT</a></p>
+</div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="css" href="{{url_for('static',filename='css/pages.css')}}">
+    <link rel="stylesheet" href="static/css/pages.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a9197537e4.js" crossorigin="anonymous"></script>
+    <script>
+      function downloadplh(){
+        const csvurl='https://onedrive.live.com/download?resid=A16D043287230FB9%21155&authkey=!ANVKloMvR083-NU&em=2';
+        const link=document.createElement('a');
+        link.href=csvurl;
+        link.download='Plantheightdoc.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      function downloadvid(){
+        const csvurl='https://onedrive.live.com/download?resid=A16D043287230FB9%21150&authkey=!ABGB7f6PsJLyhRs&em=2';
+        const link=document.createElement('a');
+        link.href=csvurl;
+        link.download='Plantheightdoc.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      function downloadyld(){
+        const csvurl='https://onedrive.live.com/download?resid=A16D043287230FB9%21150&authkey=!ABGB7f6PsJLyhRs&em=2';
+        const link=document.createElement('a');
+        link.href=csvurl;
+        link.download='Plantheightdoc.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      function downloadfinal(){
+        const csvurl='https://onedrive.live.com/download?resid=A16D043287230FB9%21165&authkey=!ANgXSzRxLDT7oQU&em=2';
+        const link=document.createElement('a');
+        link.href=csvurl;
+        link.download='Plantheightdoc.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      function downloadoutfile(){
+        const csvurl='https://onedrive.live.com/download?resid=A16D043287230FB9%21170&authkey=%21ACP8Sq9Lga95UbY&width=5411&height=3524';
+        const link=document.createElement('a');
+        link.href=csvurl;
+        link.download='Plantheightdoc.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+    </script>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <a class="navbar-brand" href="{{ url_for('index') }}">AgriGen</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('index')}}"><i class="fa-solid fa-house" style="color: #ffffff;"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index')}}"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i> About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index')}}"><i class="fa-solid fa-laptop-code" style="color: #ffffff;"></i> Get Predictions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('getdata')}}"><i class="fa-solid fa-folder-open" style="color: #ffffff;"></i> Get Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i> Contact</a>
+        </li>
+    </div>
+  </nav>
+      <div class="Home" id="infotable"></div>
+      <div class="container mt-5">
+        <div class="bodyconttable slide-up">
+            <table class="table table-light table-striped-columns">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Description</th>
+                    <th scope ="col">View the file</th>
+                    <th scope="col">Download the file</t>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Plant Height</td>
+                    <td>A raw CSV file containing data on Plant (Oryza Sativa) Height</td>
+                    <td><a href="https://1drv.ms/x/s!ArkPI4cyBG2hgRvASPA-BXaP4RCA?e=s5Ws1D" class="btn btn-success">View</a></td>
+                    <td><a onclick="downloadplh()"class="btn btn-dark"><i class="fa-solid fa-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Plant Yield</td>
+                    <td>A raw CSV file containing file containing plant yield along with subpopulation</td>
+                    <td><a href="https://1drv.ms/x/s!ArkPI4cyBG2hgRYdixyvzo-efYpN?e=lOU7jd" class="btn btn-success">View</a></td>
+                    <td><a onclick="downloadyld()" class="btn btn-dark"><i class="fa-solid fa-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Imputed Genome Variation ID</td>
+                    <td>A CSV file containing 9 variation ID's along with nucleotides of each Variation IDs and Cultivar IDs</td>
+                    <td><a href="https://1drv.ms/x/s!ArkPI4cyBG2hgSFeGqgWq8r9Vgjk?e=Etur8p" class="btn btn-success">View</a></td>
+                    <td><a onclick="downloadvid()" class="btn btn-dark"><i class="fa-solid fa-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Database</td>
+                    <td>The final database which is obtained by processing the above files and was to train the machine learning model</td>
+                    <td><a href="https://1drv.ms/x/s!ArkPI4cyBG2hgSW2kKlO2faIrbsW?e=qzYnwR" class="btn btn-success">View</a></td>
+                    <td><a onclick="downloadfinal()" class="btn btn-dark"><i class="fa-solid fa-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Phylogenetic Tree</td>
+                    <td>Phylogenetic tree which is generated from the database</td>
+                    <td><a href="https://1drv.ms/i/s!ArkPI4cyBG2hgSrr_dT2S1KBY8eu?e=5VESZY" class="btn btn-success">View</a></td>
+                    <td><a onclick="downloadoutfile()" class="btn btn-dark"><i class="fa-solid fa-download"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br><br>
+    <footer id="contact">
+      <div class="foots">
+          <h1 class="cons" style="text-align: center;">Contact Us</h1>
+          <br>
+          <p class="cons""><i class="fa-solid fa-inbox" style="color: #ffffff;"></i> Email: atharvvt14@gmail.com</p>
+          <br>
+          <p class="cons" ><i class="fa-solid fa-phone" style="color: #ffffff;"></i>  mobile no: 8688535513</p>
+          <br>
+          <p class="cons"><i class="fa-brands fa-github"></i> Github id:<a style="color:#ffffff;" href="https://github.com/CodifyAT">CodifyAT</a></p>
+      </div>
+      </footer>
+</body>
+</html>
