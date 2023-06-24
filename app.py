@@ -53,7 +53,3 @@ def predict():
         pryield=pryield[0]
 
         return jsonify({'Sequence':genseq,'Predicted_Height':prheight,'Predicted_Subpopulation':prsubpop,'Predicted_Yield':pryield})
-
-
-if __name__=="__main__":
-    app.run(debug=True)
