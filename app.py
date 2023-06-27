@@ -4,7 +4,7 @@ import pickle
 app=Flask(__name__,static_folder='static')
 
 def get_h():
-    with open('https://github.com/CodifyAT/gposmlfinal/blob/main/dataheight.pkl','rb') as h:
+    with open('dataheight.pkl','rb') as h:
         model=pickle.load(h)
     return model
 
