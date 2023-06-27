@@ -4,17 +4,17 @@ import pickle
 app=Flask(__name__,static_folder='static')
 
 def get_h():
-    with open('https://github.com/CodifyAT/gposmlfinal/blob/main/dataheight.pkl','rb') as h:
+    with open('dataheight.pkl','rb') as h:
         model=pickle.load(h)
     return model
 
 def get_s():
-    with open('https://github.com/CodifyAT/gposmlfinal/blob/main/datasubpopulation.pkl', 'rb') as s:
+    with open('datasubpopulation.pkl', 'rb') as s:
         model=pickle.load(s)
     return model
 
 def get_y():
-    with open('https://github.com/CodifyAT/gposmlfinal/blob/main/datayield.pkl', 'rb') as y:
+    with open('datayield.pkl', 'rb') as y:
         model=pickle.load(y)
     return model
 
